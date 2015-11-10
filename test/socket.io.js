@@ -3,7 +3,7 @@ var http = require('http').Server;
 var io = require('..');
 var fs = require('fs');
 var join = require('path').join;
-var ioc = require('socket.io-client');
+var ioc = require('socket.io-client-pure');
 var request = require('supertest');
 var expect = require('expect.js');
 
@@ -23,7 +23,7 @@ describe('socket.io', function(){
 
   it('should be the same version as client', function(){
     var version = require('../package').version;
-    expect(version).to.be(require('socket.io-client/package').version);
+    expect(version).to.be(require('socket.io-client-pure/package').version);
   });
 
   describe('set', function() {
@@ -148,7 +148,7 @@ describe('socket.io', function(){
 
   describe('server attachment', function(){
     describe('http.Server', function(){
-      var clientVersion = require('socket.io-client/package').version;
+      var clientVersion = require('socket.io-client-pure/package').version;
 
       it('should serve static files', function(done){
         var srv = http();
